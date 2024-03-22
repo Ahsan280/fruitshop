@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+      <article class="card-body">
+		  {% include 'includes/alerts.html' %}
+		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+		<form method="POST" action="{% url 'register' %}">
+			{% csrf_token %}
+			<div class="form-row">
+					<div class="col form-group">
+						<label>First name</label>
+					  	<input type="text" class="form-control" placeholder="Enter First Name" id="first_name" name="first_name" required>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Last name</label>
+					  	<input type="text" class="form-control" placeholder="Enter Last Name" name="last_name" required>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+
+				<div class="form-row">
+					<div class="col form-group">
+						<label>Email</label>
+						<input type="email" class="form-control" placeholder="Enter Email" name="email" required>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Phone Number</label>
+						<input type="text" class="form-control" placeholder="Enter Phone Number" name="phone_number" required>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+
+				<div class="form-row">
+					<div class="col form-group">
+						<label>Create Password</label>
+						<input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Confrim Password</label>
+						<input type="password" class="form-control" placeholder="ReEnter Password " name="confirm_password" required>
+					</div> <!-- form-group end.// -->
+				</div> <!-- form-row end.// -->
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block"> Register  </button>
+			</div> <!-- form-group// -->
+
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
+    <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}
