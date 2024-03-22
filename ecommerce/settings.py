@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*d*s=*i8^4zec@hytqx3_2wg88hg0r*6r9i%svx&ux9b6=#%m(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -80,10 +80,21 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'railway',
+        'USER':'postgres',
+        'PASSWORD':'TqSFzopBEWOdzJvEBpWLdEktxkNkCEhd',
+        'HOST':'roundhouse.proxy.rlwy.net',
+        'PORT':'40069',
     }
 }
 
@@ -130,9 +141,9 @@ MESSAGE_TAGS = {
 
 
 STATIC_URL = 'static/'
-STATIC_ROOT=BASE_DIR /'static'
+STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS=[
-    'ecommerce/static',
+    os.path.join(BASE_DIR, 'static')
 ]
 
 MEDIA_URL='media/'
